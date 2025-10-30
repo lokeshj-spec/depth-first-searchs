@@ -1,6 +1,6 @@
 <h1>ExpNo 2 : Implement Depth First Search Traversal of a Graph</h1> 
-<h3>Name: </h3>
-<h3>Register Number:     </h3>
+<h3>Name: Lokesh J </h3>
+<h3>Register Number: 212224030017     </h3>
 <H3>Aim:</H3>
 <p> To Implement Depth First Search Traversal of a Graph using Python 3.</p>
 <h3>Theory:</h3>
@@ -92,4 +92,35 @@ F H <BR>
 <h3>Result:</h3>
 <hr>
 <p>Thus,a Graph was constructed and implementation of Depth First Search for the same graph was done successfully.</p>
+# Depth First Search (DFS) Traversal of a Graph
+
+def dfs(graph, start, visited=None):
+    if visited is None:
+        visited = []
+    visited.append(start)
+    for neighbour in graph[start]:
+        if neighbour not in visited:
+            dfs(graph, neighbour, visited)
+    return visited
+
+# Input Section
+n, e = map(int, input("Enter number of nodes and edges: ").split())
+graph = {}
+
+# Construct Graph
+for i in range(e):
+    u, v = input("Enter edge: ").split()
+    if u not in graph:
+        graph[u] = []
+    if v not in graph:
+        graph[v] = []
+    graph[u].append(v)
+    graph[v].append(u)  # For undirected graph
+
+# Starting Node
+start = list(graph.keys())[0]
+
+# Perform DFS Traversal
+print("DFS Traversal:", dfs(graph, start))
+
 
